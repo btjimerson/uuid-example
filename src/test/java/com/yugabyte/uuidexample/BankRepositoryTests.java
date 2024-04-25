@@ -1,5 +1,6 @@
 package com.yugabyte.uuidexample;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
@@ -31,16 +32,19 @@ public class BankRepositoryTests {
     @Test
     void testInsertWithConversion() throws Exception {
 
-        BankEntity bank = new BankEntity();
         String bankId = UUID.randomUUID().toString();
+        String bankLocationId = UUID.randomUUID().toString();
+
+        BankEntity bank = new BankEntity();
         bank.setBankId(bankId);
-        bank.setBankName(bankId);
+        bank.setBankLocationId(bankLocationId);
         bank.setCity("Des Moines");
         bank.setState("IA");
-
         bankRepository.save(bank);
+
         Optional<BankEntity> savedBank = bankRepository.findById(bankId);
         assertTrue(savedBank.isPresent());
+        assertEquals(savedBank.get().getBankId(), bankId);
         LOG.info(String.format("Bank id = [%s]", savedBank.get().getBankId()));
 
     }

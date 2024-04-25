@@ -16,9 +16,9 @@ public class BankEntity {
     @Column(name = "BANK_ID", updatable = false)
     private String bankId;
 
-    @Column(name = "BANK_NAME")
+    @Column(name = "BANK_LOCATION_ID")
     @Convert(converter = UuidConverter.class)
-    private String bankName;
+    private String bankLocationId;
 
     @Column(name = "CITY")
     private String city;
@@ -34,12 +34,12 @@ public class BankEntity {
         this.bankId = bankId;
     }
 
-    public String getBankName() {
-        return bankName;
+    public String getBankLocationId() {
+        return bankLocationId;
     }
 
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
+    public void setBankLocationId(String bankLocationId) {
+        this.bankLocationId = bankLocationId;
     }
 
     public String getCity() {
